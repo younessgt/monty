@@ -30,7 +30,7 @@ void tok(stack_t **stack, unsigned int line_number, char *buffer)
 	global_var.tok1 = token;
 	if (token == NULL)
 	{
-		free(buffer);
+		/*free(buffer);*/
 		return;
 	}
 	global_var.tok3 = strtok(NULL," \t\n");

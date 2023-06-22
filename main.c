@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-	free(global_var.buffer);	
+	free(global_var.buffer);
 	fclose(global_var.fd);
 	free_list(&stack);
 	return (0);
