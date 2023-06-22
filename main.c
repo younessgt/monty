@@ -39,17 +39,19 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&(global_var.buffer), &len, global_var.fd)) != EOF)
 	{
-
-		if (read != -1)
+		if (global_var.buffer[0] != 35)
 		{
-			tok(&stack, track, global_var.buffer);
-			track++;
-		}
-		else
-		{
-			free(global_var.buffer);
-			fclose(global_var.fd);
-			exit(EXIT_FAILURE);
+			if (read != -1)
+			{
+				tok(&stack, track, global_var.buffer);
+				track++;
+			}
+			else
+			{
+				free(global_var.buffer);
+				fclose(global_var.fd);
+				exit(EXIT_FAILURE);
+			}
 		}
 	}
 	free(global_var.buffer);
