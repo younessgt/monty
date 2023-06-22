@@ -18,7 +18,7 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 void msg_error(stack_t **stack, unsigned int line_number)
 {
 	(void)(stack);
-	fprintf(stderr,"L%u: unknown instruction %s",line_number,global_var.tok1);
+	fprintf(stderr,"L%u: unknown instruction %s\n",line_number,global_var.tok1);
 	fclose(global_var.fd);
 	free(global_var.buffer);
 	exit(EXIT_FAILURE);
@@ -46,7 +46,7 @@ void push_s(stack_t **stack, unsigned int line_number)
 		new_n = malloc(sizeof(stack_t));
 		if (new_n == NULL)
 		{
-			 fprintf(stderr,"Error: malloc failed");
+			 fprintf(stderr,"Error: malloc failed\n");
 		 	fclose(global_var.fd);
 		 	free(global_var.buffer);
 		 	exit(EXIT_FAILURE);
@@ -60,7 +60,7 @@ void push_s(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr,"L%u: usage: push integer", line_number);
+		fprintf(stderr,"L%u: usage: push integer\n", line_number);
 		fclose(global_var.fd);
 		free(global_var.buffer);
 		free_list(stack);
