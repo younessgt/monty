@@ -9,15 +9,16 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 		{"pop", pop_s},
 		{"swap", swap_s},
 		{"add", add_s},
+		{"sub", sub_s},
 		{"msgerror", msg_error}
 	};
-	while (i < 6)
+	while (i < 7)
 	{
 		if (strcmp(func[i].opcode, token) == 0)
 			return (func[i].f);
 		i++;
 	}
-	return (func[6].f);
+	return (func[7].f);
 }
 void msg_error(stack_t **stack, unsigned int line_number)
 {
