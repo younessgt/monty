@@ -18,10 +18,7 @@ void sub_s(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 		i = temp->n;
 		j = (*stack)->n;
-		if (i > j)
-			(*stack)->n = i - j;
-		else
-			(*stack)->n = j - i;
+		(*stack)->n = j - i;
 		free(temp);
 	}
 	else
