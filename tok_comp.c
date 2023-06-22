@@ -3,22 +3,24 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	instruction_t func[] = {
-		{"push",push_s},
-		{"pall",pall_s},
-		{"msgerror",msg_error}
+		{"push", push_s},
+		{"pall", pall_s},
+		{"pint", pint_s},
+		{"msgerror", msg_error}
 	};
-	while (i < 2)
+	while (i < 3)
 	{
-		if (strcmp(func[i].opcode,token) == 0)
+		if (strcmp(func[i].opcode, token) == 0)
 			return (func[i].f);
 		i++;
 	}
-	return (func[2].f);
+	return (func[3].f);
 }
 void msg_error(stack_t **stack, unsigned int line_number)
 {
 	(void)(stack);
-	fprintf(stderr,"L%u: unknown instruction %s\n",line_number,global_var.tok1);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number,
+			global_var.tok1);
 	fclose(global_var.fd);
 	free(global_var.buffer);
 	exit(EXIT_FAILURE);
@@ -26,30 +28,31 @@ void msg_error(stack_t **stack, unsigned int line_number)
 void tok(stack_t **stack, unsigned int line_number, char *buffer)
 {
 	char *token;
-	token = strtok(buffer," \t\n");
+
+	token = strtok(buffer, " \t\n");
 	global_var.tok1 = token;
 	if (token == NULL)
 	{
-		/*free(buffer);*/
 		return;
 	}
-	global_var.tok3 = strtok(NULL," \t\n");
+	global_var.tok3 = strtok(NULL, " \t\n");
 	if (global_var.tok3 != NULL && (isnumber(global_var.tok3) == 1))
 		global_var.tok2 = atoi(global_var.tok3);
-	compare(token)(stack,line_number);
+	compare(token)(stack, line_number);
 }
 void push_s(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_n;
+
 	if ((global_var.tok3 != NULL) && (isnumber(global_var.tok3) == 1))
-	{ 
+	{
 		new_n = malloc(sizeof(stack_t));
 		if (new_n == NULL)
 		{
-			 fprintf(stderr,"Error: malloc failed\n");
-		 	fclose(global_var.fd);
-		 	free(global_var.buffer);
-		 	exit(EXIT_FAILURE);
+			fprintf(stderr, "Error: malloc failed\n");
+			fclose(global_var.fd);
+			free(global_var.buffer);
+			exit(EXIT_FAILURE);
 		}
 		new_n->n = global_var.tok2;
 		new_n->next = *stack;
@@ -60,10 +63,10 @@ void push_s(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr,"L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		fclose(global_var.fd);
 		free(global_var.buffer);
 		free_list(stack);
 		exit(EXIT_FAILURE);
 	}
-}	
+}

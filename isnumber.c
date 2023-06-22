@@ -1,4 +1,8 @@
 #include "monty.h"
+/**
+ * isnumber - function that
+ *
+ */
 int isnumber(char *token)
 {
 	if (token[0] == '\0')

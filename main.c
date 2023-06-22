@@ -2,6 +2,7 @@
 #include "monty.h"
 #include <stdio.h>
 #include <string.h>
+void free_list(stack_t **stack);
 global global_var;
 int main(int argc, char **argv)
 {
@@ -9,22 +10,23 @@ int main(int argc, char **argv)
 	ssize_t read;
 	stack_t *stack;
 	unsigned int track = 1;
+
 	global_var.buffer = NULL;
 	len = 0;
 	stack = NULL;
 
 	if (argc != 2)
 	{
-		fprintf(stderr,"USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	global_var.fd = fopen(argv[1],"r");
+	global_var.fd = fopen(argv[1], "r");
 	if (global_var.fd == NULL)
 	{
-		fprintf(stderr,"Error: Can't open file %s\n",argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while((read = getline(&(global_var.buffer),&len,global_var.fd)) != EOF)
+	while ((read = getline(&(global_var.buffer), &len, global_var.fd)) != EOF)
 	{
 
 		if (read != -1)
