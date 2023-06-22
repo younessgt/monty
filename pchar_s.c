@@ -9,8 +9,8 @@ void pchar_s(stack_t **stack, unsigned int line_number)
 {
 	if (*stack != NULL)
 	{
-		if ((*stack)->n >= 0 && (*stack)->n <= 127)
-			putchar((*stack)->n);
+		if ((*stack)->n >= 0 && ((*stack)->n) <= 127)
+			printf("%c\n", (*stack)->n);
 		else
 		{
 			fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
