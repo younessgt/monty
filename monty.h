@@ -38,4 +38,5 @@ void push_s(stack_t **stack, unsigned int line_number);
 void pall_s(stack_t **stack, unsigned int line_number);
 void free_list(stack_t **stack);
 void pint_s(stack_t **stack, unsigned int line_number);
+void pop_s(stack_t **stack, unsigned int line_number);
 #endif
