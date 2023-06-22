@@ -20,15 +20,16 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 		{"mul", mul_s},
 		{"mod", mod_s},
 		{"pchar", pchar_s},
+		{"pstr", pstr_s},
 		{"msgerror", msg_error}
 	};
-	while (i < 12)
+	while (i < 13)
 	{
 		if (strcmp(func[i].opcode, token) == 0)
 			return (func[i].f);
 		i++;
 	}
-	return (func[12].f);
+	return (func[13].f);
 }
 /**
  * msg_error - function that print error if the instruction not found
