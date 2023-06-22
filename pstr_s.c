@@ -19,7 +19,6 @@ void pstr_s(stack_t **stack, unsigned int line_number)
 				printf("%c\n", temp->n);
 			else
 			{
-				fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 				fclose(global_var.fd);
 				free(global_var.buffer);
 				free_list(stack);
@@ -30,7 +29,7 @@ void pstr_s(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		printf("\n");
 		fclose(global_var.fd);
 		free(global_var.buffer);
 		free_list(stack);
