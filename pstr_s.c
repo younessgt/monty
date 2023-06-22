@@ -10,15 +10,17 @@ void pstr_s(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
+	(void)(line_number);
 	temp = *stack;
 	if (*stack != NULL)
 	{
 		while (temp != NULL)
 		{
 			if (temp->n > 0 && (temp->n) <= 127)
-				printf("%c\n", temp->n);
+				printf("%c", temp->n);
 			else
 			{
+				printf("\n");
 				fclose(global_var.fd);
 				free(global_var.buffer);
 				free_list(stack);
@@ -29,7 +31,6 @@ void pstr_s(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		printf("\n");
 		fclose(global_var.fd);
 		free(global_var.buffer);
 		free_list(stack);
