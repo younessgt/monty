@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&(global_var.buffer), &len, global_var.fd)) != EOF)
 	{
-		if (global_var.buffer[0] != 35)
+		if (global_var.buffer[0] != '#')
 		{
 			if (read != -1)
 			{
