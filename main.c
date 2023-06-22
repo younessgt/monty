@@ -2,8 +2,19 @@
 #include "monty.h"
 #include <stdio.h>
 #include <string.h>
+/**
+ * free_list - function that free the stack
+ * @stack: pointer to pointer to the structure
+ * Return: nothing
+ */
 void free_list(stack_t **stack);
 global global_var;
+/**
+ * main - starting point
+ * @argc: number of arguments
+ * @argv: arguments
+ * Return: 0 if success
+ */
 int main(int argc, char **argv)
 {
 	size_t len;

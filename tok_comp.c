@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+ * compare - function that compares the token to the opcode
+ * @token: pointer to character
+ * Return: nothing
+ */
 void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
@@ -24,6 +29,12 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 	}
 	return (func[11].f);
 }
+/**
+ * msg_error - function that print error if the instruction not found
+ * @stack: pointer to pointer to structure
+ * @line_number: the number of line been executed
+ * Return: nothing
+ */
 void msg_error(stack_t **stack, unsigned int line_number)
 {
 	(void)(stack);
@@ -33,6 +44,13 @@ void msg_error(stack_t **stack, unsigned int line_number)
 	free(global_var.buffer);
 	exit(EXIT_FAILURE);
 }
+/**
+ * tok - function that extract token from the line
+ * @stack: pointer to pointer to structure
+ * @line_number: the number of line been executed
+ * @buffer: the buffer where the line is stored
+ * Return: nothing
+ */
 void tok(stack_t **stack, unsigned int line_number, char *buffer)
 {
 	char *token;
@@ -48,6 +66,12 @@ void tok(stack_t **stack, unsigned int line_number, char *buffer)
 		global_var.tok2 = atoi(global_var.tok3);
 	compare(token)(stack, line_number);
 }
+/**
+ * push_s - function that pushes an element to the beginning of the stack
+ * @stack: the pointer tp pointer to the structure
+ * @line_number: the number of line been executed
+ * Return: Nothing
+ */
 void push_s(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_n;

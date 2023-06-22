@@ -1,7 +1,9 @@
 #include "monty.h"
 /**
- * isnumber - function that
- *
+ * isnumber - function that checks if the token is
+ * a number or not
+ * @token: the token to check
+ * Return: 1 if number -1 if not
  */
 int isnumber(char *token)
 {
