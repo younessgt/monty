@@ -5,7 +5,7 @@
  * @line_number: lines number of the file
  * Return: nothing
  */
-void pint_s(stack_t **stack, unsigned int line_number)
+void pchar_s(stack_t **stack, unsigned int line_number)
 {
 	if (*stack != NULL)
 	{
