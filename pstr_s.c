@@ -14,26 +14,12 @@ void pstr_s(stack_t **stack, unsigned int line_number)
 	temp = *stack;
 	if (*stack != NULL)
 	{
-		while (temp != NULL)
+		while (temp != NULL && temp->n != 0)
 		{
 			if (temp->n > 0 && (temp->n) <= 127)
 				printf("%c", temp->n);
-			else
-			{
-				printf("\n");
-				fclose(global_var.fd);
-				free(global_var.buffer);
-				free_list(stack);
-				exit(EXIT_FAILURE);
-			}
 			temp = temp->next;
 		}
-	}
-	else
-	{
-		fclose(global_var.fd);
-		free(global_var.buffer);
-		free_list(stack);
-		exit(EXIT_FAILURE);
+		printf("\n");
 	}
 }
